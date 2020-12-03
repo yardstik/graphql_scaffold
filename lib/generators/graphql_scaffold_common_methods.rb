@@ -128,10 +128,14 @@ module GraphqlScaffoldCommonMethods
     case the_type.to_s.downcase
     when 'date'
       'GraphQL::Types::ISO8601Date'
-    when 'datetime'
+    when 'datetime', 'timestamp'
       'GraphQL::Types::ISO8601DateTime'
     when 'references', 'integer', 'float'
       'Integer'
+    when 'text'
+      'String'
+    when 'decimal'
+      'Float'
     when 'json'
     else
       the_type.to_s.titlecase
